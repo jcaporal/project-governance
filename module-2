@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Governance Playbook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #f4f7f9;
+        }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-lora { font-family: 'Lora', serif; }
+        .bg-pride-blue { background-color: #50b3db; }
+        .text-pride-blue { color: #50b3db; }
+        .bg-pride-red { background-color: #e83760; }
+        .text-pride-red { color: #e83760; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-8 max-w-2xl">
+        <div id="page-home" class="bg-white rounded-2xl shadow-lg overflow-hidden p-10 flex flex-col justify-between items-center text-center transition-all duration-500">
+            <div>
+                <p class="font-poppins text-sm text-pride-blue mb-4">Microlearning Series: Project Governance</p>
+                <h1 class="font-poppins text-3xl md:text-4xl font-bold text-[#1d364e] mb-4">
+                    Stop Guessing, Start Leading: A Playbook for Project Governance.
+                </h1>
+                <p class="font-lora text-base text-gray-600 mb-8">
+                    Projects often fail not because of the work, but because of poor governance. Our playbook helps you move from chaos to control by clarifying the <span class="font-bold">what, who,</span> and <span class="font-bold">how</span> of your projects.
+                </p>
+            </div>
+            <div class="w-full flex flex-col md:flex-row justify-center gap-4 mt-8">
+                <button onclick="navigate('page-lifecycle')" class="font-poppins font-bold bg-pride-blue text-white py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 duration-300">The What</button>
+                <button onclick="navigate('page-raci'); initializeQuiz();" class="font-poppins font-bold bg-pride-blue text-white py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 duration-300">The Who</button>
+                <button onclick="navigate('page-prioritization')" class="font-poppins font-bold bg-pride-blue text-white py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 duration-300">The How</button>
+            </div>
+        </div>
+
+        <div id="page-lifecycle" class="bg-white rounded-2xl shadow-lg overflow-hidden p-10 flex-col justify-between items-center text-center transition-all duration-500 hidden">
+            <h2 class="font-poppins text-2xl font-bold text-[#1d364e] mb-2">The What: Project Life Cycle</h2>
+            <p class="font-lora text-sm text-gray-500 mb-6">Click on each phase to explore the details.</p>
+            
+            <div id="lifecycle-container" class="w-full">
+                <!-- Feasibility -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('feasibility-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Feasibility 🔍</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="feasibility-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        Determines if the business case is valid and if the organization has the capability to deliver the intended outcome.
+                    </p>
+                </div>
+                <!-- Design -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('design-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Design ✏️</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="design-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        Planning and analysis lead to the design of a project’s deliverable(s).
+                    </p>
+                </div>
+                <!-- Build -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('build-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Build 🏗️</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="build-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        Construction of the deliverable(s) with integrated quality assurance activities.
+                    </p>
+                </div>
+                <!-- Test -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('test-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Test 🧪</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="test-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        Final quality review and inspection of deliverables are carried out before transition, go-live, or customer acceptance.
+                    </p>
+                </div>
+                <!-- Deploy -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('deploy-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Deploy 🚀</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="deploy-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        Project deliverables are put into use and transitional activities required for sustainment, benefits realization, and organizational change management are completed.
+                    </p>
+                </div>
+                <!-- Close -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('close-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Close ✅</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="close-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        The project is closed, project knowledge and artifacts are archived, project team members are released, and contracts are closed.
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="navigate('page-home')" class="font-poppins font-bold bg-pride-red text-white py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 duration-300 mt-8">Back to Home</button>
+        </div>
+
+        <div id="page-raci" class="bg-white rounded-2xl shadow-lg overflow-hidden p-10 flex-col justify-between items-center text-center transition-all duration-500 hidden">
+            <h2 class="font-poppins text-2xl font-bold text-[#1d364e] mb-2">The Who: RACI Quiz</h2>
+            <p class="font-lora text-sm text-gray-500 mb-6">See if you can correctly identify the RACI role in each scenario.</p>
+            
+            <div id="quiz-container">
+                <p id="quiz-question" class="font-lora text-lg font-bold text-[#1d364e] mb-4 text-left"></p>
+                <div id="quiz-options" class="flex flex-col gap-2"></div>
+                <p id="quiz-feedback" class="font-poppins text-base font-bold text-left mt-4 hidden"></p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4 mt-8">
+                <button id="next-button" onclick="nextQuestion()" class="font-poppins font-bold bg-pride-blue text-white py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 duration-300 hidden">Next</button>
+                <button onclick="navigate('page-home')" class="font-poppins font-bold bg-pride-red text-white py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 duration-300">Back to Home</button>
+            </div>
+        </div>
+        
+        <div id="page-prioritization" class="bg-white rounded-2xl shadow-lg overflow-hidden p-10 flex-col justify-between items-center text-center transition-all duration-500 hidden">
+            <h2 class="font-poppins text-2xl font-bold text-[#1d364e] mb-2">The How: Prioritization</h2>
+            <p class="font-lora text-sm text-gray-500 mb-6">Click on each principle to see why it's a game-changer.</p>
+            
+            <div id="prioritization-container" class="w-full">
+                <!-- Strategic Alignment -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('strategic-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Strategic Alignment 📈</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="strategic-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        The highest priority initiatives are those that directly support your business's overarching mission. Does this project move the needle on a key metric?
+                    </p>
+                </div>
+                <!-- Impact vs. Effort -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('impact-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Impact vs. Effort ⚖️</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="impact-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        Evaluate the potential benefit of a project against the resources required to complete it. Focus on projects that offer a big win for a small lift.
+                    </p>
+                </div>
+                <!-- Dependency Risk -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200" onclick="toggleContent('risk-content')">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-poppins text-lg font-bold text-[#1d364e]">Dependency Risk 🚦</h3>
+                        <span class="text-xl text-pride-blue">+</span>
+                    </div>
+                    <p id="risk-content" class="font-lora text-sm text-gray-600 mt-2 text-left hidden">
+                        Consider external factors that could derail the project. Are there other teams, systems, or resources you're dependent on? High dependencies often mean higher risk.
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="navigate('page-home')" class="font-poppins font-bold bg-pride-red text-white py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 duration-300 mt-8">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center mt-8 pb-8">
+        <h4 class="font-poppins text-xl font-bold text-[#1d364e]">PRIDE</h4>
+        <p class="font-lora text-sm opacity-80 mt-1">Project Rigor and Integrated Excellence</p>
+        <a href="https://www.enshored.com/" target="_blank" class="text-pride-blue text-sm underline">enshored.com</a>
+    </div>
+
+    <script>
+        const pages = ['page-home', 'page-lifecycle', 'page-raci', 'page-prioritization'];
+        
+        function navigate(pageId) {
+            pages.forEach(id => {
+                const page = document.getElementById(id);
+                if (page) {
+                    page.classList.add('hidden');
+                }
+            });
+            const currentPage = document.getElementById(pageId);
+            if (currentPage) {
+                currentPage.classList.remove('hidden');
+            }
+        }
+
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+            }
+        }
+        
+        const quizQuestions = [
+            {
+                scenario: "A project manager is presenting the weekly status report to key stakeholders. What is the project manager's RACI role?",
+                options: ["Responsible", "Accountable", "Consulted", "Informed"],
+                correctAnswer: "Informed",
+                explanation: "When you present a status report, you are sharing information about a decision that has already been made or work that has already been done. You are keeping stakeholders **Informed**."
+            },
+            {
+                scenario: "The lead developer is writing the code for a new feature. What is the developer's RACI role?",
+                options: ["Responsible", "Accountable", "Consulted", "Informed"],
+                correctAnswer: "Responsible",
+                explanation: "The person or team who actually does the work is **Responsible**. They are on the hook for completing the task."
+            },
+            {
+                scenario: "A senior executive gives the final approval on the project budget. What is the executive's RACI role?",
+                options: ["Responsible", "Accountable", "Consulted", "Informed"],
+                correctAnswer: "Accountable",
+                explanation: "The **Accountable** party is the single person who holds the ultimate authority to approve or deny a decision. The buck stops with them."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function initializeQuiz() {
+            currentQuestionIndex = 0;
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (currentQuestionIndex < quizQuestions.length) {
+                const question = quizQuestions[currentQuestionIndex];
+                document.getElementById('quiz-question').innerHTML = `Question ${currentQuestionIndex + 1}: ${question.scenario}`;
+                
+                const optionsContainer = document.getElementById('quiz-options');
+                optionsContainer.innerHTML = '';
+                
+                question.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.className = 'quiz-option w-full bg-gray-50 rounded-xl p-4 text-left font-lora text-[#1d364e] border border-gray-200 hover:bg-gray-100 transition-colors duration-200';
+                    button.onclick = () => checkAnswer(option);
+                    optionsContainer.appendChild(button);
+                });
+
+                document.getElementById('quiz-feedback').classList.add('hidden');
+                document.getElementById('next-button').classList.add('hidden');
+            } else {
+                navigate('page-home');
+            }
+        }
+
+        function checkAnswer(selectedOption) {
+            const question = quizQuestions[currentQuestionIndex];
+            const feedbackElement = document.getElementById('quiz-feedback');
+            const options = document.querySelectorAll('.quiz-option');
+
+            options.forEach(option => {
+                option.disabled = true;
+                if (option.textContent === selectedOption) {
+                    option.classList.remove('hover:bg-gray-100');
+                    if (selectedOption === question.correctAnswer) {
+                        option.classList.add('bg-green-100', 'border-green-500');
+                        feedbackElement.innerHTML = `**Correct!** ${question.explanation}`;
+                        feedbackElement.classList.add('text-green-600');
+                        feedbackElement.classList.remove('text-red-600');
+                    } else {
+                        option.classList.add('bg-red-100', 'border-red-500');
+                        feedbackElement.innerHTML = `**Incorrect.** The correct answer is **${question.correctAnswer}**. ${question.explanation}`;
+                        feedbackElement.classList.add('text-red-600');
+                        feedbackElement.classList.remove('text-green-600');
+                    }
+                }
+            });
+
+            feedbackElement.classList.remove('hidden');
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                document.getElementById('next-button').classList.remove('hidden');
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        window.onload = () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                navigate(hash);
+            } else {
+                navigate('page-home');
+            }
+        };
+        
+        window.onhashchange = () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                navigate(hash);
+            } else {
+                navigate('page-home');
+            }
+        };
+
+    </script>
+</body>
+</html>
