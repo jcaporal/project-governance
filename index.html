@@ -262,7 +262,6 @@
             <div id="results-container" class="hidden mt-8 text-left">
                 <h3 class="font-poppins text-lg font-bold text-[#1d364e] mb-4">Your Prioritized Projects:</h3>
                 <div id="results-list" class="space-y-4"></div>
-                <button onclick="navigate('page-home')" class="font-poppins font-bold bg-pride-red text-white py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 duration-300 mt-8">Back to Home</button>
             </div>
             
             <div id="add-project-container" class="w-full flex flex-col md:flex-row items-center gap-4 mt-6">
@@ -279,7 +278,7 @@
     <!-- Footer -->
     <div class="text-center mt-8 pb-8">
         <h4 class="font-poppins text-xl font-bold text-[#1d364e]">PRIDE</h4>
-        <p class="font-lora text-sm opacity-80 mt-1">Project Rigor and Integrated Excellence</p>
+        <p class="font-lora text-sm opacity-80 mt-1">Project Rigor and Integrated Delivery Excellence</p>
         <a href="https://www.enshored.com/" target="_blank" class="text-pride-blue text-sm underline">enshored.com</a>
     </div>
 
@@ -313,8 +312,8 @@
             const inputElement = document.getElementById('name-input');
             userName = inputElement.value.trim();
             if (userName) {
-                document.getElementById('welcome-title').textContent = `Hello, ${userName}! Ready to start?`;
-                inputElement.classList.add('hidden');
+                document.getElementById('welcome-title').textContent = `Hello, ${userName}!`;
+                document.getElementById('name-input').classList.add('hidden');
                 document.querySelector('#page-home button').classList.add('hidden');
                 document.getElementById('welcome-text').textContent = "Projects often fail not because of the work, but because of poor governance. Our playbook helps you move from chaos to control by clarifying the what, who, and how of your projects.";
                 document.getElementById('main-menu').classList.remove('hidden');
@@ -624,8 +623,16 @@
                 navigate('page-home');
             }
             // Set initial homepage text
-            document.getElementById('welcome-title').textContent = "Welcome to the Project Governance Playbook.";
-            document.getElementById('welcome-text').textContent = "To start, please enter your name.";
+            if (userName) {
+                 document.getElementById('welcome-title').textContent = `Hello, ${userName}!`;
+                 document.getElementById('name-input').classList.add('hidden');
+                 document.querySelector('#page-home button').classList.add('hidden');
+                 document.getElementById('welcome-text').textContent = "Projects often fail not because of the work, but because of poor governance. Our playbook helps you move from chaos to control by clarifying the what, who, and how of your projects.";
+                 document.getElementById('main-menu').classList.remove('hidden');
+            } else {
+                 document.getElementById('welcome-title').textContent = "Welcome to the Project Governance Playbook.";
+                 document.getElementById('welcome-text').textContent = "To start, please enter your name.";
+            }
         };
         
         window.onhashchange = () => {
